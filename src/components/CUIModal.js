@@ -42,9 +42,9 @@ const CUIModal = ({ bodyText, headerText }) => {
           {headerText}
         </Typography>
 
-        {bodyText.map(text => {
+        {bodyText.map((text, i) => {
           return (
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            <Typography id="modal-modal-description" sx={{ mt: 2 }} key={i}>
               {text}
             </Typography>
           );

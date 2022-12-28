@@ -38,7 +38,7 @@ const ApplicationForm = ({ field, handleAddField, handleRemoveField, index, subm
             full
             inputValue={value}
             helperText={FirstLastNameError || emailError}
-            error={FirstLastNameError || emailError}
+            error={FirstLastNameError !== '' || emailError !== ''}
             variant="outlined"
             inputID={uid}
             inputProps={{ maxLength: 128 }}
@@ -68,7 +68,7 @@ const ApplicationForm = ({ field, handleAddField, handleRemoveField, index, subm
             full
             inputValue={value}
             helperText={ageErrorText || yearErrorText}
-            error={ageErrorText || yearErrorText}
+            error={ageErrorText !== '' || yearErrorText !== ''}
             inputProps={{
               maxLength: 2,
             }}

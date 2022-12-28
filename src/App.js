@@ -99,4 +99,4 @@ function App() {
   );
 }
 
-export default App;
+export const MemodFuncComponent = React.memo(App);
