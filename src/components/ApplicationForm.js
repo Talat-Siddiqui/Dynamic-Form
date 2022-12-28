@@ -21,10 +21,16 @@ import { Add, Remove } from '@mui/icons-material';
 const ApplicationForm = ({ field, handleAddField, handleRemoveField, index, submitButtonClicked }) => {
   const { data_type: dataType, label, value, title, user_gender: userGender, all_values: selectOptions, relocate, uid } = field || {};
 
-  const FirstLastNameError = uid === 'name' && submitButtonClicked && !isValidName(value) ? 'Please enter valid Name' : '';
-  const emailError = uid === 'email' && submitButtonClicked && !isValidEmail(value) ? 'Please enter valid email' : '';
-  const ageErrorText = uid === 'age' && submitButtonClicked && !isValidAge(value) ? 'Please enter valid age' : '';
-  const yearErrorText = uid === 'year' && submitButtonClicked && !isValidYear(value) ? 'Please enter valid year' : '';
+  let FirstLastNameError = uid === 'name' && submitButtonClicked && !isValidName(value) ? 'Please enter valid Name' : '';
+  let emailError = uid === 'email' && submitButtonClicked && !isValidEmail(value) ? 'Please enter valid email' : '';
+  let ageErrorText = uid === 'age' && submitButtonClicked && !isValidAge(value) ? 'Please enter valid age' : '';
+  let yearErrorText = uid === 'year' && submitButtonClicked && !isValidYear(value) ? 'Please enter valid year' : '';
+  if (submitButtonClicked && value === '') {
+    FirstLastNameError = `The ${uid} field cannot be empty`;
+    emailError = 'The email field cannot be empty';
+    ageErrorText = 'The age field cannot be empty';
+    yearErrorText = 'The year field cannot be empty';
+  }
 
   switch (dataType) {
     case 'string':
@@ -34,7 +40,6 @@ const ApplicationForm = ({ field, handleAddField, handleRemoveField, index, subm
             inputType={uid === 'password' ? CUIInputType.PASSWORD : CUIInputType.TEXT}
             inputPlaceholder={label}
             inputLabel={label}
-            textFocus
             full
             inputValue={value}
             helperText={FirstLastNameError || emailError}
@@ -64,7 +69,6 @@ const ApplicationForm = ({ field, handleAddField, handleRemoveField, index, subm
             inputType={CUIInputType.TEL}
             inputPlaceholder={label}
             inputLabel={label}
-            textFocus
             full
             inputValue={value}
             helperText={ageErrorText || yearErrorText}

@@ -14,7 +14,7 @@ const CUIModal = ({ bodyText, headerText }) => {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    width: '75%',
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
@@ -38,7 +38,7 @@ const CUIModal = ({ bodyText, headerText }) => {
             bottom: '5px',
           }}
         />
-        <Typography id="modal-modal-title" variant="h6" component="h2">
+        <Typography id="modal-modal-title" variant="h4" component="h2">
           {headerText}
         </Typography>
 
