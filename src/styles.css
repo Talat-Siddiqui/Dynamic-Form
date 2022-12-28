@@ -1,0 +1,58 @@
+html, body {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+}
+
+@media only screen and  (min-width: 800px) {
+    .form-bg {
+        display: flex;
+        position: relative;
+        height: 100%;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        background-image: linear-gradient(-111deg, #7cb3f124 5%, #7cb3f1fc 98%);
+        padding: 20px;
+    }
+
+    .card {
+        display: flex;
+        justify-content: center;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        border-radius: 10px;
+        padding: 40px 200px 40px 40px;
+        flex-direction: column;
+        animation: shine 2s infinite forwards;
+
+    }
+
+    .card-align {
+        width: 50%;
+        background: white;
+    }
+
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 700px) {
+    .card-mobile {
+        padding: 30px;
+    }
+}
+
+.add-remove-style {
+    display: flex;
+    flex-direction: row;
+}
+
+.field-padding {
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.MuiAccordion-region {
+    background: aliceblue;
+}
+
+.MuiAccordionDetails-root .css-15v22id-MuiAccordionDetails-root {
+    background: antiquewhite;
+}

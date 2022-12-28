@@ -1,0 +1,193 @@
+[
+  {
+    "page_label": "Job Application Form",
+    "input_fields": [
+      {
+        "uid": "name",
+        "data_type": "string",
+        "label": "first Name",
+        "value": "Talat",
+        "_metadata": {
+          "required": true
+        }
+      },
+      {
+        "uid": "name",
+        "data_type": "string",
+        "label": "Last Name",
+        "value": "Siddiqui",
+        "_metadata": {
+          "required": true
+        }
+      },
+      {
+        "uid": "age",
+        "data_type": "number",
+        "label": "Age",
+        "value": "28"
+      },
+      {
+        "uid": "email",
+        "data_type": "string",
+        "label": "Email Id",
+        "value": "test@gmail.com",
+        "_metadata": {
+          "required": true
+        }
+      },
+      {
+        "uid": "password",
+        "data_type": "string",
+        "label": "Password",
+        "value": "talat@1234",
+        "_metadata": {
+          "required": true
+        }
+      },
+      {
+        "uid": "gender",
+        "data_type": "radio",
+        "label": "Gender",
+        "user_gender": [
+          "Male",
+          "Female",
+          "Other"
+        ],
+        "value": "Female",
+        "_metadata": {
+          "required": true
+        }
+      },
+      {
+        "uid": "relocate",
+        "data_type": "checkbox",
+        "title": "Ready to Relocate?",
+        "relocate": [
+          "Yes",
+          "No"
+        ],
+        "value": "Yes",
+        "_metadata": {
+          "required": true
+        }
+      },
+      {
+        "uid": "experience",
+        "data_type": "dropdown",
+        "label": "Work Experience",
+        "all_values": [
+          "One year",
+          "Two years",
+          "Three years",
+          "More than 5 years"
+        ],
+        "value": "Three years",
+        "_metadata": {
+          "required": true
+        }
+      },
+      {
+        "uid": "group",
+        "data_type": "group",
+        "title": "College Name",
+        "value": [
+          {
+            "uid": "name",
+            "data_type": "string",
+            "label": "College Name",
+            "value": "Saboo Siddik college"
+          },
+          {
+            "uid": "group",
+            "data_type": "group",
+            "title": "School Name",
+            "value": [
+              {
+                "uid": "name",
+                "data_type": "string",
+                "label": "School Name",
+                "value": "Anjuman Islam High School"
+              },
+              {
+                "uid": "year",
+                "data_type": "number",
+                "label": "School Passing year",
+                "value": "2012"
+              }
+            ]
+          },
+          {
+            "uid": "year",
+            "data_type": "number",
+            "label": "College Passing year",
+            "value": "2014"
+          }
+        ]
+      },
+      {
+        "uid": "groupA",
+        "data_type": "group",
+        "title": "Career Details",
+        "value": [
+          {
+            "uid": "experience",
+            "data_type": "dropdown",
+            "label": "Work Experience",
+            "all_values": [
+              "Doctorate",
+              "Masters",
+              "Bachelors",
+              "Diploma",
+              "High School"
+            ],
+            "value": "Bachelors"
+          },
+          {
+            "uid": "course",
+            "data_type": "dropdown",
+            "label": "Course",
+            "all_values": [
+              "Medicine",
+              "Science",
+              "Arts",
+              "B.pharm",
+              "D.pharm",
+              "B.Sc",
+              "BCA",
+              "BDS",
+              "B.Arch",
+              "Advertising/Marketing"
+            ],
+            "value": "Science"
+          },
+          {
+            "uid": "group",
+            "data_type": "group",
+            "title": "Work experience",
+            "value": [
+              {
+                "uid": "Job",
+                "data_type": "dropdown",
+                "label": "Current Job title",
+                "all_values": [
+                  "Banking Professional",
+                  "Charted Accountant",
+                  "Company Secretary",
+                  "Investment Professional",
+                  "Not Working"
+                ],
+                "value": "Charted Accountant"
+              },
+              {
+                "uid": "company",
+                "data_type": "string",
+                "label": "Company Name",
+                "value": "Shaadi.com"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
