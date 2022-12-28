@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b6ad9201-b2bd-453c-a91d-bac199a354c3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ApplicationForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ApplicationForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CUIModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CUIModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +103,7 @@
       <workItem from="1672007499944" duration="3811000" />
       <workItem from="1672086389181" duration="13904000" />
       <workItem from="1672119872203" duration="33230000" />
-      <workItem from="1672205959335" duration="16118000" />
+      <workItem from="1672205959335" duration="18053000" />
     </task>
     <servers />
   </component>
