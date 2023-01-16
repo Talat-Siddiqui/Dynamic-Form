@@ -25,7 +25,7 @@ const ApplicationForm = ({
                              index,
                              submitButtonClicked,
                              handleOnChangeValue,
-                             userEnteredValue
+                             userValue
                          }) => {
     const {
         data_type: dataType,
@@ -35,50 +35,64 @@ const ApplicationForm = ({
         user_gender: userGender,
         all_values: selectOptions,
         relocate,
-        uid
+        uid,
+        _metadata: metaData
     } = field || {};
+    const {year} = userValue || {};
 
-    let FirstLastNameError = uid === 'name' && submitButtonClicked && !isValidName(value) ? 'Please enter valid Name' : '';
-    let emailError = uid === 'email' && submitButtonClicked && !isValidEmail(value) ? 'Please enter valid email' : '';
-    let ageErrorText = uid === 'age' && submitButtonClicked && !isValidAge(value) ? 'Please enter valid age' : '';
-    let yearErrorText = uid === 'year' && submitButtonClicked && !isValidYear(value) ? 'Please enter valid year' : '';
-    if (submitButtonClicked && value === '') {
-        FirstLastNameError = `The ${uid} field cannot be empty`;
+
+    let firstNameError = uid === 'firstName' && !isValidName(userValue.firstName) ? 'Please enter valid First Name' : '';
+    let lastNameError = uid === 'lastName' && !isValidName(userValue.lastName) ? 'Please enter valid Last Name' : '';
+    let emailError = uid === 'email' && !isValidEmail(userValue.email) ? 'Please enter valid email' : '';
+    let ageErrorText = uid === 'age' && !isValidAge(userValue.age) ? 'Please enter valid age' : '';
+    let yearErrorText = uid === 'year' && !isValidYear(year) ? 'Please enter valid year' : '';
+    if (userValue.firstName === '' && submitButtonClicked) {
+        firstNameError = `The ${uid} field cannot be empty`;
+    }
+    if (userValue.lastName === '' && submitButtonClicked) {
+        lastNameError = `The ${uid} field cannot be empty`;
+    }
+    if (userValue.email === '' && submitButtonClicked) {
         emailError = 'The email field cannot be empty';
+    }
+    if (userValue.age === '' && submitButtonClicked) {
         ageErrorText = 'The age field cannot be empty';
+    }
+    if (userValue.year === '' && submitButtonClicked) {
         yearErrorText = 'The year field cannot be empty';
     }
 
     switch (dataType) {
         case 'string':
             return (
-                <div className="add-remove-style">
+                <>
                     <CUIFormInput
                         inputType={uid === 'password' ? CUIInputType.PASSWORD : CUIInputType.TEXT}
                         inputPlaceholder={label}
                         inputLabel={label}
                         full
-                        focus
-                        defaultValue={userEnteredValue}
-                        helperText={FirstLastNameError || emailError}
-                        error={FirstLastNameError !== '' || emailError !== ''}
+                        helperText={firstNameError || lastNameError || emailError}
+                        error={firstNameError !== '' || lastNameError !== '' || emailError !== ''}
                         variant="outlined"
                         inputID={uid}
                         inputProps={{maxLength: 128}}
                         onChange={(e) => handleOnChangeValue(e)}
                         required
+                        inputName={uid}
                     />
                     {uid === 'email' ? (
-                        <>
+                        <div className="add-remove-style">
+                            <h4>Add new Email Id field <span style={{fontSize: '11px'}}>(field will be added at the bottom)</span>
+                                :</h4>
                             <IconButton onClick={() => handleRemoveField(index)}>
                                 <Remove/>
                             </IconButton>
                             <IconButton onClick={handleAddField}>
                                 <Add/>
                             </IconButton>
-                        </>
+                        </div>
                     ) : null}
-                </div>
+                </>
             );
 
         case 'number':
@@ -89,14 +103,16 @@ const ApplicationForm = ({
                         inputPlaceholder={label}
                         inputLabel={label}
                         full
-                        inputValue={value}
                         helperText={ageErrorText || yearErrorText}
                         error={ageErrorText !== '' || yearErrorText !== ''}
                         inputProps={{
                             maxLength: 2,
                         }}
+                        onChange={(e) => handleOnChangeValue(e)}
                         variant="outlined"
                         inputID={uid}
+                        inputName={uid}
+
                     />
                 </>
             );
@@ -112,8 +128,11 @@ const ApplicationForm = ({
                                     <CUIFormInput
                                         inputType={CUIInputType.CHECKBOX}
                                         inputName="genderCheckbox"
-                                        inputChecked={value === answers}
                                         inputID={uid}
+                                        checked={userValue.relocate === answers}
+                                        onChange={e => {
+                                            handleOnChangeValue(e);
+                                        }}
                                     />
                                 }
                                 label={<span>{answers}</span>}
@@ -133,7 +152,9 @@ const ApplicationForm = ({
                             <FormControlLabel
                                 control={
                                     <CUIFormInput inputType={CUIInputType.RADIO} inputName="genderRadio"
-                                                  inputChecked={value === gender} inputID={uid}/>
+                                                  inputID={uid} checked={userValue.gender === gender} onChange={e => {
+                                        handleOnChangeValue(e);
+                                    }}/>
                                 }
                                 label={<span>{gender}</span>}
                                 style={{marginRight: 30, paddingBottom: '20px'}}
@@ -177,7 +198,8 @@ const ApplicationForm = ({
                             <Typography>{title}</Typography>
                         </AccordionSummary>
                         {value.map((val, index) => {
-                            return <GroupElement value={val} key={index} title={title}/>;
+                            return <GroupElement value={val} key={index} title={title} userValue={userValue}
+                                                 handleOnChangeValue={handleOnChangeValue}/>;
                         })}
                     </Accordion>
                 </div>

@@ -11,7 +11,16 @@ function App() {
     const {input_fields: inputFields, page_label: pageName} = elements || {};
     const [inputField, updateInputField] = useState(inputFields);
     const [submitButtonClicked, isSubmitButtonClicked] = useState(false);
-    const [userEnteredValue, setUserEnteredValue] = useState(inputField[0].value)
+    const [value, setValue] = useState({
+        firstName: '',
+        lastName: '',
+        email: 'siddiquitalat111@gmail.com',
+        password: 'test',
+        age: '24',
+        year: '2012',
+        relocate: 'Yes',
+        genderCheckbox: 'Male'
+    })
 
     useEffect(() => {
         setElements(formJson[0]);
@@ -36,8 +45,8 @@ function App() {
     };
 
     const handleOnChangeValue = (e) => {
-        const value = e.target.value;
-        setUserEnteredValue(value);
+        const value1 = e.target.value;
+        setValue({...value, [e.target.name]: value1});
     }
 
     const handleAddField = () => {
@@ -57,6 +66,7 @@ function App() {
     };
 
     const showModal = (bodyText, headerText) => {
+        if (value.firstName === '' || value.lastName === '' || value.age === '' || value.email === '' || value.year === '') return null;
         return <CUIModal bodyText={bodyText} headerText={headerText}/>;
     };
 
@@ -87,8 +97,8 @@ function App() {
                                                                     handleAddField={handleAddField}
                                                                     submitButtonClicked={submitButtonClicked}
                                                                     handleRemoveField={handleRemoveField}
-                                                                    userEnteredValue={userEnteredValue}
                                                                     handleOnChangeValue={handleOnChangeValue}
+                                                                    userValue={value}
                                                                 />
                                                             </div>
                                                         )}

@@ -3,16 +3,16 @@
     "page_label": "Job Application Form",
     "input_fields": [
       {
-        "uid": "name",
+        "uid": "firstName",
         "data_type": "string",
-        "label": "first Name",
+        "label": "First Name",
         "value": "Talat",
         "_metadata": {
           "required": true
         }
       },
       {
-        "uid": "name",
+        "uid": "lastName",
         "data_type": "string",
         "label": "Last Name",
         "value": "Siddiqui",
