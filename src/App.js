@@ -18,7 +18,7 @@ function App() {
         password: 'test',
         age: '24',
         year: '2012',
-        relocate: 'Yes',
+        relocate: "Yes",
         genderCheckbox: 'Male'
     })
 
@@ -66,7 +66,7 @@ function App() {
     };
 
     const showModal = (bodyText, headerText) => {
-        if (value.firstName === '' || value.lastName === '' || value.age === '' || value.email === '' || value.year === '') return null;
+        // if (value.firstName === '' || value.lastName === '' || value.age === '' || value.email === '' || value.year === '') return null;
         return <CUIModal bodyText={bodyText} headerText={headerText}/>;
     };
 

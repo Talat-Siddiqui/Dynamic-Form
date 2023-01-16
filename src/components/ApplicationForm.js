@@ -36,30 +36,16 @@ const ApplicationForm = ({
         all_values: selectOptions,
         relocate,
         uid,
-        _metadata: metaData
     } = field || {};
-    const {year} = userValue || {};
+    const {year, firstName, lastName, email, age} = userValue || {};
 
-
-    let firstNameError = uid === 'firstName' && !isValidName(userValue.firstName) ? 'Please enter valid First Name' : '';
-    let lastNameError = uid === 'lastName' && !isValidName(userValue.lastName) ? 'Please enter valid Last Name' : '';
-    let emailError = uid === 'email' && !isValidEmail(userValue.email) ? 'Please enter valid email' : '';
-    let ageErrorText = uid === 'age' && !isValidAge(userValue.age) ? 'Please enter valid age' : '';
+    let firstNameError = uid === 'firstName' && !isValidName(firstName) ? 'Please enter valid First Name' : '';
+    let lastNameError = uid === 'lastName' && !isValidName(lastName) ? 'Please enter valid Last Name' : '';
+    let emailError = uid === 'email' && !isValidEmail(email) ? 'Please enter valid email' : '';
+    let ageErrorText = uid === 'age' && !isValidAge(age) ? 'Please enter age between 15 and 65' : '';
     let yearErrorText = uid === 'year' && !isValidYear(year) ? 'Please enter valid year' : '';
     if (userValue.firstName === '' && submitButtonClicked) {
         firstNameError = `The ${uid} field cannot be empty`;
-    }
-    if (userValue.lastName === '' && submitButtonClicked) {
-        lastNameError = `The ${uid} field cannot be empty`;
-    }
-    if (userValue.email === '' && submitButtonClicked) {
-        emailError = 'The email field cannot be empty';
-    }
-    if (userValue.age === '' && submitButtonClicked) {
-        ageErrorText = 'The age field cannot be empty';
-    }
-    if (userValue.year === '' && submitButtonClicked) {
-        yearErrorText = 'The year field cannot be empty';
     }
 
     switch (dataType) {
@@ -79,6 +65,7 @@ const ApplicationForm = ({
                         onChange={(e) => handleOnChangeValue(e)}
                         required
                         inputName={uid}
+                        style={{background: 'thistle'}}
                     />
                     {uid === 'email' ? (
                         <div className="add-remove-style">
@@ -106,13 +93,13 @@ const ApplicationForm = ({
                         helperText={ageErrorText || yearErrorText}
                         error={ageErrorText !== '' || yearErrorText !== ''}
                         inputProps={{
-                            maxLength: 2,
+                            maxLength: uid === 'age' ? 2 : 4,
                         }}
                         onChange={(e) => handleOnChangeValue(e)}
                         variant="outlined"
                         inputID={uid}
                         inputName={uid}
-
+                        style={{background: 'thistle'}}
                     />
                 </>
             );
@@ -122,6 +109,7 @@ const ApplicationForm = ({
                 <div className="cs-hm-lkng-fr">
                     <h3>{title}</h3>
                     {relocate.map(answers => {
+                        console.log(relocate, answers, 'kkk')
                         return (
                             <FormControlLabel
                                 control={
@@ -129,7 +117,6 @@ const ApplicationForm = ({
                                         inputType={CUIInputType.CHECKBOX}
                                         inputName="genderCheckbox"
                                         inputID={uid}
-                                        checked={userValue.relocate === answers}
                                         onChange={e => {
                                             handleOnChangeValue(e);
                                         }}
@@ -175,7 +162,7 @@ const ApplicationForm = ({
                             label="work experience"
                             defaultValue={value}
                             variant="outlined"
-                            style={{background: 'antiquewhite'}}
+                            style={{background: 'thistle'}}
                         >
                             {selectOptions.map(values => {
                                 return <MenuItem value={values}>{values}</MenuItem>;
@@ -193,7 +180,7 @@ const ApplicationForm = ({
                             expandIcon={<ExpandMoreOutlinedIcon/>}
                             aria-controls="panel1a-content"
                             id="panel1a-header"
-                            style={{background: 'antiquewhite'}}
+                            style={{background: 'thistle'}}
                         >
                             <Typography>{title}</Typography>
                         </AccordionSummary>
