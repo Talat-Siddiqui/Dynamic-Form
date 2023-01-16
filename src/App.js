@@ -32,6 +32,7 @@ function App() {
     const handleClick = e => {
         e.preventDefault();
         isSubmitButtonClicked(true);
+        console.log(inputField);
     };
 
     const handleOnChangeValue = (e) => {
