@@ -65,8 +65,12 @@ function App() {
         updateInputField(values);
     };
 
-    const showModal = (bodyText, headerText) => {
-        // if (value.firstName === '' || value.lastName === '' || value.age === '' || value.email === '' || value.year === '') return null;
+    const showModalOnload = (bodyText, headerText) => {
+        return <CUIModal bodyText={bodyText} headerText={headerText}/>;
+    };
+
+    const showModalOnSubmit = (bodyText, headerText) => {
+        if (value.firstName === '' || value.lastName === '' || value.age === '' || value.email === '' || value.year === '') return null;
         return <CUIModal bodyText={bodyText} headerText={headerText}/>;
     };
 
@@ -74,8 +78,8 @@ function App() {
         <div className="form-bg">
             <div className="card-align">
                 <div className="card card-mobile">
-                    <>{showModal(bodyTextForModal, headerTextForModal)}</>
-                    {submitButtonClicked && showModal(bodyTextForSubmitForm, headerTextForSubmitForm)}
+                    <>{showModalOnload(bodyTextForModal, headerTextForModal)}</>
+                    {submitButtonClicked && showModalOnSubmit(bodyTextForSubmitForm, headerTextForSubmitForm)}
                     <h1 style={{fontSize: '42px'}}>{pageName}</h1>
                     <DragDropContext onDragEnd={handleOnDragEnd}>
                         <Droppable droppableId="characters">
